@@ -12,9 +12,9 @@ export function getPool() {
       user: process.env.DB_USER || 'root',
       password: process.env.DB_PASSWORD || '',
       database: process.env.DB_DATABASE,
+      ssl: { rejectUnauthorized: true },
       waitForConnections: true,
       connectionLimit: 10,
-      // Send/receive JS Date instances for TIMESTAMP columns.
       dateStrings: false,
       timezone: 'Z',
       charset: 'utf8mb4',

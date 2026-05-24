@@ -1,0 +1,292 @@
+/* Copied verbatim from the original index.html <style> block.
+   Do not refactor selectors or values — the look depends on these exact rules.
+   Google Fonts are loaded via <link> in src/app/layout.js <head> — Turbopack
+   strips external @import url() from CSS files, so importing here does nothing. */
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body {
+  background: linear-gradient(180deg, #1A0B0B 0%, #260D0D 50%, #1A0B0B 100%) fixed;
+  color: #fff;
+  font-family: 'Be Vietnam Pro', system-ui, sans-serif;
+  overflow-x: hidden;
+  min-height: 100vh;
+}
+::-webkit-scrollbar { width: 4px; }
+::-webkit-scrollbar-track { background: #1A0B0B; }
+::-webkit-scrollbar-thumb { background: rgba(245,215,161,0.3); border-radius: 2px; }
+
+@keyframes fadeSlideUp {
+  from { opacity: 0; transform: translateY(24px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+@keyframes bounce {
+  0%,100% { transform: translateY(0); }
+  50%      { transform: translateY(6px); }
+}
+@keyframes musicWave {
+  from { transform: scaleY(0.3); }
+  to   { transform: scaleY(1); }
+}
+@keyframes glowPulse {
+  0%,100% { text-shadow: 0 0 30px rgba(245,215,161,0.2); }
+  50%      { text-shadow: 0 0 60px rgba(245,215,161,0.5); }
+}
+@keyframes shimmer {
+  0%   { background-position: -200% center; }
+  100% { background-position: 200% center; }
+}
+@keyframes countPulse {
+  0%,100% { transform: scale(1); }
+  50%      { transform: scale(1.04); }
+}
+@keyframes confettiFall {
+  0%   { transform: translateY(-20px) rotate(0deg); opacity: 1; }
+  100% { transform: translateY(100vh) rotate(720deg); opacity: 0; }
+}
+@keyframes sparkle {
+  0%,100% { opacity: 0; transform: scale(0); }
+  50%      { opacity: 1; transform: scale(1); }
+}
+
+/* Scroll progress */
+#progress-bar {
+  position: fixed; top: 0; left: 0;
+  height: 2px; width: 0%;
+  background: linear-gradient(90deg, #C9A86C, #F5D7A1, #C9A86C);
+  background-size: 200% auto;
+  animation: shimmer 2s linear infinite;
+  z-index: 300;
+  transition: width 0.1s ease;
+}
+
+/* Intersection observer animation helper */
+.anim-in {
+  opacity: 0;
+  transform: translateY(28px);
+  transition: opacity 0.7s cubic-bezier(0.22,1,0.36,1), transform 0.7s cubic-bezier(0.22,1,0.36,1);
+}
+.anim-in.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Page transitions */
+.page-enter {
+  animation: fadeIn 0.5s cubic-bezier(0.22,1,0.36,1) both;
+}
+
+@keyframes shootingStar {
+  0%   { transform: translate3d(0,0,0) rotate(35deg) scaleX(0); opacity: 0; }
+  10%  { transform: translate3d(60px,42px,0) rotate(35deg) scaleX(0.4); opacity: 1; }
+  70%  { transform: translate3d(620px,434px,0) rotate(35deg) scaleX(1); opacity: 1; }
+  100% { transform: translate3d(900px,630px,0) rotate(35deg) scaleX(0.2); opacity: 0; }
+}
+.shooting-star {
+  position: absolute;
+  background: linear-gradient(90deg, rgba(245,215,161,0) 0%, rgba(245,215,161,0.35) 30%, rgba(255,232,184,0.95) 80%, rgba(255,255,255,1) 100%);
+  border-radius: 999px;
+  transform-origin: right center;
+  filter: drop-shadow(0 0 4px rgba(245,215,161,0.7));
+  animation: shootingStar linear forwards;
+  will-change: transform, opacity;
+}
+.shooting-star::after {
+  content: '';
+  position: absolute;
+  right: -1px;
+  top: 50%;
+  width: 6px;
+  height: 6px;
+  margin-top: -3px;
+  background: #fff;
+  border-radius: 50%;
+  box-shadow: 0 0 12px 2px rgba(255,232,184,0.9), 0 0 24px 4px rgba(245,215,161,0.5);
+}
+
+/* Page content sits above shooting stars (stars at z:1, content at z:2) */
+.page-enter > div > div {
+  position: relative;
+  z-index: 2;
+}
+/* Footer also above stars */
+.page-enter > div > footer {
+  position: relative;
+  z-index: 2;
+}
+
+/* Mobile nav */
+@media (max-width: 768px) {
+  .nav-links-desktop { display: none !important; }
+  .nav-mobile-menu { display: flex !important; }
+}
+@media (min-width: 769px) {
+  .nav-mobile-toggle { display: none !important; }
+  .nav-mobile-fullscreen { display: none !important; }
+}
+@media (max-width: 768px) {
+  /* On mobile: center the logo horizontally via absolute positioning */
+  .nav-logo-center { position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%,-50%) !important; padding-left: 0 !important; }
+}
+
+/* ── Mobile global fixes ───────────────────────────────────── */
+@media (max-width: 768px) {
+  body { overflow-x: hidden; }
+
+  .gallery-grid { columns: 2; column-gap: 8px; }
+
+  /* Timeline mobile redesign — single column stack per item */
+  .tl-vertical-item {
+    display: flex !important;
+    flex-direction: column !important;
+    margin-bottom: 56px !important;
+    gap: 14px !important;
+    align-items: stretch !important;
+  }
+  .tl-vertical-item > div {
+    flex: none !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    padding: 0 !important;
+    justify-content: center !important;
+  }
+  /* Hide the center timeline dot column on mobile */
+  .tl-vertical-item > div:nth-child(2) { display: none !important; }
+  /* Order: text card first, photo second, regardless of left/right */
+  .tl-vertical-item:not(.right) > div:nth-child(1) { order: 1; }
+  .tl-vertical-item:not(.right) > div:nth-child(3) { order: 2; }
+  .tl-vertical-item.right > div:nth-child(1) { order: 2; }
+  .tl-vertical-item.right > div:nth-child(3) { order: 1; }
+  /* Center-align year/title block on mobile (override left/right) */
+  .tl-vertical-item .tl-text-card > div:first-child {
+    text-align: center !important;
+    padding: 0 !important;
+  }
+  /* Hide vertical timeline line on mobile (no dots, no need for line) */
+  .timeline-line { display: none !important; }
+
+  /* About page mobile: flatten 2-col grid + reorder for clean reading flow */
+  .about-grid { grid-template-columns: 1fr !important; gap: 20px !important; }
+  .about-grid > .about-col-left,
+  .about-grid > .about-col-right { display: contents !important; }
+  .about-2016     { order: 1; padding: 24px !important; margin-bottom: 0 !important; }
+  .about-2026     { order: 2; padding: 24px !important; margin-bottom: 0 !important; }
+  .about-story    { order: 3; margin-bottom: 0 !important; }
+  .about-stats    { order: 4; }
+  /* Compact year card type on mobile */
+  .about-year-card > div:first-child { font-size: 40px !important; }
+  .about-year-card > div:nth-child(2) { font-size: 17px !important; }
+  .about-year-card > p { font-size: 14px !important; }
+  /* Stats: keep 2x2 but tighter */
+  .about-stats > div { padding: 16px 12px !important; }
+  .about-stats > div > div:first-child { font-size: 26px !important; }
+
+  /* Program page mobile: time on top of card, hide left rail */
+  .program-row { gap: 0 !important; }
+  .program-time { display: none !important; }
+  .program-rail { display: none !important; }
+  .program-card { width: 100% !important; }
+  .program-card-meta { display: flex !important; }
+  .program-desktop-dot { display: none !important; }
+
+  /* Music player smaller */
+  #music-player-wrap { bottom: 16px !important; left: 16px !important; }
+
+  /* Page padding tighter */
+  .page-pad { padding-left: 16px !important; padding-right: 16px !important; }
+}
+
+@media (max-width: 480px) {
+  .gallery-grid { columns: 1; }
+}
+
+/* Gallery masonry */
+.gallery-grid {
+  columns: 3;
+  column-gap: 12px;
+}
+@media (max-width: 768px) {
+  .gallery-grid { columns: 2; }
+}
+@media (max-width: 480px) {
+  .gallery-grid { columns: 1; }
+}
+.gallery-item {
+  break-inside: avoid;
+  margin-bottom: 12px;
+  cursor: pointer;
+  border-radius: 8px;
+  overflow: hidden;
+  position: relative;
+}
+.gallery-item img {
+  width: 100%;
+  display: block;
+  border-radius: 8px;
+  transition: transform 0.4s cubic-bezier(0.22,1,0.36,1);
+}
+.gallery-item:hover img { transform: scale(1.04); }
+
+/* Timeline vertical */
+.tl-vertical-item {
+  opacity: 0;
+  transform: translateX(-30px);
+  transition: all 0.7s cubic-bezier(0.22,1,0.36,1);
+}
+.tl-vertical-item.right {
+  transform: translateX(30px);
+}
+.tl-vertical-item.visible {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+/* Form inputs */
+input, textarea, select {
+  background: rgba(61,12,16,0.7);
+  border: 1px solid rgba(245,215,161,0.2);
+  color: #fff;
+  font-family: 'Be Vietnam Pro', sans-serif;
+  font-size: 15px;
+  border-radius: 8px;
+  padding: 12px 16px;
+  width: 100%;
+  outline: none;
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+input:focus, textarea:focus, select:focus {
+  border-color: rgba(245,215,161,0.5);
+  box-shadow: 0 0 0 3px rgba(245,215,161,0.08);
+}
+input::placeholder, textarea::placeholder {
+  color: rgba(255,255,255,0.3);
+}
+select option {
+  background: #3D0C10;
+  color: #fff;
+}
+label {
+  display: block;
+  font-family: 'Be Vietnam Pro', sans-serif;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: #C9A86C;
+  margin-bottom: 6px;
+}
+
+/* Confetti pieces */
+.confetti-piece {
+  position: fixed;
+  width: 10px;
+  height: 10px;
+  top: -20px;
+  animation: confettiFall linear forwards;
+  z-index: 9999;
+  pointer-events: none;
+}

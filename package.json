@@ -1,0 +1,31 @@
+{
+  "name": "reunion",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "eslint",
+    "db:create": "node --env-file=.env.local scripts/create-db.js",
+    "migration": "node --env-file=.env.local scripts/run-sql.js db/schema.sql",
+    "seeder": "node --env-file=.env.local scripts/run-sql.js db/seed.sql",
+    "db:setup": "node --env-file=.env.local scripts/create-db.js && node --env-file=.env.local scripts/run-sql.js db/schema.sql && node --env-file=.env.local scripts/run-sql.js db/seed.sql",
+    "seed-admin": "node db/seed-admin.js",
+    "generate-blur": "node --env-file=.env.local scripts/generate-blur.js"
+  },
+  "dependencies": {
+    "bcryptjs": "^3.0.3",
+    "jose": "^6.2.3",
+    "mysql2": "^3.22.3",
+    "next": "16.2.6",
+    "react": "19.2.4",
+    "react-dom": "19.2.4",
+    "zod": "^4.4.3"
+  },
+  "devDependencies": {
+    "eslint": "^9",
+    "eslint-config-next": "16.2.6",
+    "sharp": "^0.34.5"
+  }
+}

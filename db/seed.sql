@@ -44,7 +44,7 @@ INSERT INTO timeline_photos (s3_url, year, label, display_order) VALUES
   ('https://c1-reunion.s3.ap-southeast-1.amazonaws.com/time-line/2021/slide_3.jpg', '2021', 'Ảnh 2021', 3),
   ('https://c1-reunion.s3.ap-southeast-1.amazonaws.com/time-line/2021/slide_4.jpg', '2021', 'Ảnh 2021', 4),
   ('https://c1-reunion.s3.ap-southeast-1.amazonaws.com/time-line/2021/slide_5.jpg', '2021', 'Ảnh 2021', 5),
-  ('https://c1-reunion.s3.ap-southeast-1.amazonaws.com/time-line/2025/slide_1.jpg', '2025', 'Ảnh 2025', 1),
-  ('https://c1-reunion.s3.ap-southeast-1.amazonaws.com/time-line/2025/slide_2.jpg', '2025', 'Ảnh 2025', 2),
+  ('https://c1-reunion.s3.ap-southeast-1.amazonaws.com/time-line/2025/slide_1.png', '2025', 'Ảnh 2025', 1),
+  ('https://c1-reunion.s3.ap-southeast-1.amazonaws.com/time-line/2025/slide_2.png', '2025', 'Ảnh 2025', 2),
   ('https://c1-reunion.s3.ap-southeast-1.amazonaws.com/time-line/2026/slide_1.jpg', '2026', 'Ảnh 2026', 1)
   ON DUPLICATE KEY UPDATE s3_url = VALUES(s3_url);

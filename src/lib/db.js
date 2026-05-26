@@ -12,7 +12,6 @@ export function getPool() {
       user: process.env.DB_USER || 'root',
       password: process.env.DB_PASSWORD || '',
       database: process.env.DB_DATABASE,
-      ssl: { rejectUnauthorized: true },
       waitForConnections: true,
       connectionLimit: 10,
       dateStrings: false,

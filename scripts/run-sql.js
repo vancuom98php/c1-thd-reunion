@@ -45,6 +45,11 @@ async function main() {
     database: process.env.DB_DATABASE,
     multipleStatements: true,
     charset: 'utf8mb4',
+    // TiDB Cloud (and most managed MySQL) require TLS. Toggle with DB_SSL=true
+    // so the same script still works against a plain local MySQL.
+    ...(process.env.DB_SSL === 'true' && {
+      ssl: { minVersion: 'TLSv1.2', rejectUnauthorized: true },
+    }),
   });
 
   console.log(`→ Applying ${path.relative(process.cwd(), abs)} to ${process.env.DB_DATABASE}…`);

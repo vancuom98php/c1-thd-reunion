@@ -17,6 +17,11 @@ export function getPool() {
       dateStrings: false,
       timezone: 'Z',
       charset: 'utf8mb4',
+      // Managed MySQL (TiDB Cloud, PlanetScale, Aiven) require TLS. Enable with
+      // DB_SSL=true — same toggle the offline scripts use. Off for local MySQL.
+      ...(process.env.DB_SSL === 'true' && {
+        ssl: { minVersion: 'TLSv1.2', rejectUnauthorized: true },
+      }),
     });
   }
   return pool;

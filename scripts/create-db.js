@@ -27,6 +27,11 @@ async function main() {
     user:     process.env.DB_USER     || 'root',
     password: process.env.DB_PASSWORD || '',
     multipleStatements: false,
+    // TiDB Cloud requires TLS. Toggle with DB_SSL=true so this still works
+    // against a plain local MySQL where SSL is unavailable.
+    ...(process.env.DB_SSL === 'true' && {
+      ssl: { minVersion: 'TLSv1.2', rejectUnauthorized: true },
+    }),
   });
   try {
     await conn.query(

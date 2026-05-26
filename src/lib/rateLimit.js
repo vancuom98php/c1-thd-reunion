@@ -18,7 +18,19 @@
 //   • Filter timestamps older than WINDOW_MS, push now, check length.
 // ───────────────────────────────────────────────────────────────────────────
 
-export function checkRateLimit(/* ip */) {
-  // TODO: replace this stub with the policy you choose.
+const WINDOW_MS = 60_000;
+const MAX = 3;
+const hits = new Map(); // ip -> number[] of recent post timestamps
+
+export function checkRateLimit(ip) {
+  const now = Date.now();
+  const recent = (hits.get(ip) || []).filter((t) => now - t < WINDOW_MS);
+  if (recent.length >= MAX) {
+    hits.set(ip, recent);
+    const retryAfter = Math.ceil((WINDOW_MS - (now - recent[0])) / 1000);
+    return { ok: false, retryAfter };
+  }
+  recent.push(now);
+  hits.set(ip, recent);
   return { ok: true };
 }

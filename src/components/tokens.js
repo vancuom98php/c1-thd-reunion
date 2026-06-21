@@ -29,7 +29,7 @@ export const F = {
 // Static fact sheet from the original TWEAK_DEFAULTS block. Tweaks Panel is
 // removed in the production app — these values are now constants.
 export const EVENT = {
-  date: '2026-07-25',
+  date: '2026-07-25 17:00:00',
   className: 'C1 – Trần Hưng Đạo | 2013–2016',
   heroTitle: '10 NĂM – MỘT LẦN HỘI NGỘ',
   showMusicButton: true,

@@ -15,13 +15,9 @@ const typeColors = {
 };
 
 const PROGRAM_ITEMS = [
-  { time: '14:00', type: 'open',        title: 'Về Trường & Check-in',              desc: 'Gặp lại nhau tại mái trường xưa, check-in, nhận diện thành viên và bắt đầu hành trình trở về thanh xuân.' },
-  { time: '14:30', type: 'memory',      title: 'Thăm Trường & Chụp Ảnh Kỷ Niệm',   desc: 'Cùng đi qua sân trường, hành lang, lớp học cũ và lưu lại những khoảnh khắc tập thể sau 10 năm trở về.' },
-  { time: '15:30', type: 'speech',      title: 'Tri Ân Nhà Trường',                 desc: 'Đại diện lớp gửi tặng quà lưu niệm đến trường và thầy cô như một lời cảm ơn cho những năm tháng đã đồng hành.' },
-  { time: '16:00', type: 'memory',      title: 'Trở Về Lớp Học Cũ',                 desc: 'Cùng ngồi lại trong lớp học năm xưa, xem lại hình ảnh, video kỷ niệm và tham gia những trò chơi nhỏ gợi nhớ thời học trò.' },
-  { time: '17:30', type: 'open',        title: 'Di Chuyển Đến Gala Dinner',         desc: 'Cả lớp di chuyển đến địa điểm tổ chức tiệc tối, chuẩn bị cho chương trình hội ngộ thân mật.' },
-  { time: '18:30', type: 'meal',        title: 'Gala Dinner & Hồi Tưởng Thanh Xuân', desc: 'Khai mạc chương trình, dùng tiệc tối, cùng xem lại slide, video và chia sẻ những câu chuyện sau 10 năm xa cách.' },
-  { time: '20:30', type: 'game',        title: 'Giao Lưu, Mini Game & Bốc Thăm May Mắn', desc: 'Tham gia các hoạt động giao lưu, văn nghệ, trò chơi tập thể, bốc thăm nhận quà và cùng lưu lại những khoảnh khắc đáng nhớ.' },
+  { time: '17:00', type: 'open',        title: 'Check-in',              desc: 'Gặp lại nhau tại nhà hàng, check-in, nhận diện thành viên và bắt đầu hành trình trở về thanh xuân.' },
+  { time: '18:00', type: 'meal',        title: 'Gala Dinner & Hồi Tưởng Thanh Xuân', desc: 'Khai mạc chương trình, dùng tiệc tối, cùng xem lại slide, video và chia sẻ những câu chuyện sau 10 năm xa cách.' },
+  { time: '18:30', type: 'game',        title: 'Giao Lưu, Mini Game & Bốc Thăm May Mắn', desc: 'Tham gia các hoạt động giao lưu, văn nghệ, trò chơi tập thể, bốc thăm nhận quà và cùng lưu lại những khoảnh khắc đáng nhớ.' },
   { time: '22:00', type: 'close',       title: 'Bế Mạc',                            desc: 'Khép lại chương trình với lời cảm ơn, lời chúc và lời hẹn gặp lại C1 trong những lần hội ngộ tiếp theo.' },
 ];
 
